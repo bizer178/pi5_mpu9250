@@ -1,0 +1,51 @@
+
+/dts-v1/;
+
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+
+/{
+	compatible = "brcm,bcm2712";
+
+	fragment@0 {
+		target = <&rp1_gpio>;
+		__overlay__ {
+			mpu9250_23: mpu9250_p23{
+				function = "gpio";
+				pins = "gpio23";
+				bias-pull-up;
+			};
+	
+		};
+	};
+
+	fragment@1 {
+		target = <&rp1_i2c1>;
+		frag1: __overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			clock-frequency = <400000>;
+			pinctrl-0 = <&rp1_i2c1_2_3>;
+			pinctrl-names = "default";	
+
+			mpu9250: mpu9250@68 {
+				compatible = "invensense,mpu9250";
+				reg = <0x68>;
+				interrupt-parent = <&rp1_gpio>;
+				interrupts = <23 IRQ_TYPE_EDGE_FALLING>;
+				pinctrl-0 = <&mpu9250_23>;
+				pinctrl-names = "default";
+				status= "okay";
+			};		
+		};
+		
+	};
+
+
+
+
+};

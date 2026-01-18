@@ -1,0 +1,23 @@
+[Unit]
+Description=MPU9250 Socket Server Daemon
+After=network.target
+
+[Service]
+# 指定剛建立的使用者與群組
+User=mpuuser
+Group=mydevices
+
+# 指向絕對路徑
+WorkingDirectory=/opt/mpu_project
+ExecStart=/opt/mpu_project/mpu_socket.py
+
+# Daemon 異常行為管理
+Restart=always
+RestartSec=5
+
+# 限制環境權限
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

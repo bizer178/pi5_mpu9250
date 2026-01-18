@@ -1,0 +1,7 @@
+
+SUBSYSTEM=="iio", KERNEL=="iio:device*", ATTRS{name}=="mpu9250", \
+    GROUP="mydevices", MODE="0660", \
+    SYMLINK+="mpu_9250", \
+    RUN+="/bin/sh -c 'chgrp -R mydevices /sys%p && chmod -R g+w /sys%p/*'"
+
+
