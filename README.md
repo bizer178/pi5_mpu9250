@@ -40,7 +40,7 @@
 
 本專案使用 Raspberry Pi 5 的 I2C-1 介面進行通訊 ，並利用 GPIO 23 接收感測器的 Data Ready 中斷訊號 。
 
-![MPU9250 與 Raspberry Pi 5 接線圖](./images/wiring.png)
+![MPU9250 與 Raspberry Pi 5 接線圖](./image/wiring.png)
 
 **接腳對應表：**
 
@@ -207,7 +207,7 @@ This project implements a comprehensive embedded monitoring solution, spanning f
 This project uses the Raspberry Pi 5's I2C-1 interface and GPIO 23 as an interrupt trigger. Please refer to the diagram below for hardware connection:
 
 **Pinout Reference:**
-![Wiring between MPU2950 and Raspberry Pi 5 ](./images/wiring.png)
+![Wiring between MPU2950 and Raspberry Pi 5 ](./image/wiring.png)
 
 | MPU9250 Pin | Raspberry Pi 5 Physical Pin (Header) | Function Description |
 | --- | --- | --- |
@@ -312,3 +312,4 @@ Communication uses **JSON over TCP**.
 
 License
     This project is licensed under the MIT License - see the LICENSE file for details.
+
