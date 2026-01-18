@@ -23,9 +23,7 @@
 
 | 檔案名稱 | 分類 | 說明 |
 | --- | --- | --- |
-| `mpu9250-pi5-overlay.dts` | 硬體配置 | <br>**設備樹源檔**：配置 I2C-1 地址 (0x68) 與 GPIO 23 中斷 。
-
- |
+| `mpu9250-pi5-overlay.dts` | 硬體配置 | <br>**設備樹源檔**：配置 I2C-1 地址 (0x68) 與 GPIO 23 中斷 。|
 | `mpu_buffer.py` | 驅動封裝 | 處理 Sysfs 節點讀取、Scale/Offset 校正與 IIO Buffer 管理。 |
 | `mpu_socket.py` | 後端服務 | 非阻塞式 Socket Server，處理 JSON 指令與數據廣播。 |
 | `mpu_server.service` | 系統部署 | <br>**Systemd 服務設定**：配置權限隔離、自動重啟與路徑 。|
@@ -188,18 +186,11 @@ This project implements a comprehensive embedded monitoring solution, spanning f
 
 | File Name | Category | Description |
 | --- | --- | --- |
-| `mpu9250-pi5-overlay.dts` | Hardware Config | <br>**Device Tree Source**: Configures I2C-1 address (0x68) and GPIO 23 interrupt.
-
- |
+| `mpu9250-pi5-overlay.dts` | Hardware Config | <br>**Device Tree Source**: Configures I2C-1 address (0x68) and GPIO 23 interrupt. |
 | `mpu_buffer.py` | Driver Wrapper | Handles Sysfs node reading, Scale/Offset correction, and IIO Buffer management. |
 | `mpu_socket.py` | Backend Service | Non-blocking Socket Server handling JSON instructions and data broadcasting. |
-| `mpu_server.service` | System Deployment | <br>**Systemd Service Config**: Configures privilege isolation, automatic restart, and execution paths.
-
- |
-| `mpu9250_ui_app.py` | Frontend App | PySide6-based cross-platform GUI monitoring program.
-
- |
-
+| `mpu_server.service` | System Deployment | <br>**Systemd Service Config**: Configures privilege isolation, automatic restart, and execution paths. |
+| `mpu9250_ui_app.py` | Frontend App | PySide6-based cross-platform GUI monitoring program. |
 ---
 
 ## Hardware Wiring Instructions
@@ -298,7 +289,7 @@ Communication uses **JSON over TCP**.
 
 * **Configure Channels** (Client -> Server): `{"action": "config_channels", "params": ["accel_x", "gyro_y"]}`
 * **Data Format** (Server -> Client): `{"accel_x": 0.12, "gyro_y": -0.05}`
-
+  
 ---
 
 ## Technical Highlights
@@ -310,6 +301,8 @@ Communication uses **JSON over TCP**.
 * **Non-blocking Multiplexing**: Utilizes the `selectors` module to listen for client instructions and handle data distribution simultaneously within a single thread.
 * **Robust Resource Management**: Ensures buffers and hardware threads are correctly closed via signal handlers when the service stops (SIGTERM/SIGINT).
 
-License
-    This project is licensed under the MIT License - see the LICENSE file for details.
+## License
+ 
+* This project is licensed under the MIT License - see the LICENSE file for details.
+
 
